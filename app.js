@@ -1,3 +1,4 @@
+require('dotenv').config()
 var express = require('express')
 var cors = require('cors')
 var cookieParser = require('cookie-parser')
@@ -6,7 +7,7 @@ var mongoose = require('mongoose')
 
 var todoService = require('./routes/todo')
 
-const dbUri = "mongodb+srv://<user>:<password>@cluster0-xnfos.mongodb.net/test?retryWrites=true&w=majority"
+const dbUri = `${process.env.DB_TYPE}://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/test?retryWrites=true&w=majority`
 
 // initialize app
 var app = express()

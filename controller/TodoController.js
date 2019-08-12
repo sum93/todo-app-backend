@@ -49,6 +49,16 @@ class TodoController {
         res.json(err)
       })
   }
+
+  removeDone(req, res) {
+    Todo.deleteMany({completed: true})
+      .then(info => {
+        res.json(info.deletedCount)
+      })
+      .catch(err => {
+        res.json(err)
+      })
+  }
 }
 
 module.exports = TodoController
